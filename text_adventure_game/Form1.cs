@@ -90,7 +90,7 @@ namespace text_adventure_game
                 case 4:
                     insult = true;
 
-                    this.outputLabel.Text = "Your friend turns around and says in shock: \"We\'re still at the start! We really haven\'t moved at all!\"\n";
+                    this.outputLabel.Text = ">> Your friend turns around and says in shock: \"We\'re still at the start! We really haven\'t moved at all!\"\n";
                     this.Controls.Remove(this.option3);
 
                     sleep_refresh(750);
@@ -105,7 +105,7 @@ namespace text_adventure_game
 
                     break;
                 case 5:
-                    this.outputLabel.Text = "You follow your friends out of the tunnel and see a group of people in the distance walking towards the tunnel. \"Don't go!\" one of your friends yells.\n";
+                    this.outputLabel.Text = ">> You follow your friends out of the tunnel and see a group of people in the distance walking towards the tunnel. \"Don't go!\" one of your friends yells.\n";
 
                     sleep_refresh(1000);
 
@@ -121,7 +121,7 @@ namespace text_adventure_game
                     PAGE = 6;
                     break;
                 case 6:
-                    this.outputLabel.Text = "As you start getting closer you think the people walking to the tunnel look exactly like you and your friends. You consider that after something absurd just happened and now you're seeing a group of who look exactly like you, you think you time traveled. Do you say something?";
+                    this.outputLabel.Text = ">> As you start getting closer you think the people walking to the tunnel look exactly like you and your friends. You consider that after something absurd just happened and now you're seeing a group of who look exactly like you, you think you time traveled. Do you say something?";
 
                     this.option1.Text = "Yes";
                     this.option2.Text = "No";
@@ -129,7 +129,7 @@ namespace text_adventure_game
                     PAGE = 7;
                     break;
                 case 7:
-                    this.outputLabel.Text = "\"I know this sounds very strange, but I think we've time traveled. If this is true we really shouldn't go near them, we've probably already interacted with them too much.\" Because you doubted one of your friends, the rest of the group ignores you. Do you keep following them ?";
+                    this.outputLabel.Text = ">> \"I know this sounds very strange, but I think we've time traveled. If this is true we really shouldn't go near them, we've probably already interacted with them too much.\" Because you doubted one of your friends, the rest of the group ignores you. Do you keep following them ?";
 
                     this.option1.Text = "Yes";
                     this.option2.Text = "No";
@@ -138,7 +138,7 @@ namespace text_adventure_game
 
                     break;
                 case 8:
-                    this.outputLabel.Text = "You follow them for a few more a few more minutes then \"normally\" walk away and hide in a bush.";
+                    this.outputLabel.Text = ">> You follow them for a few more a few more minutes then \"normally\" walk away and hide in a bush.";
 
                     sleep_refresh(1100);
 
@@ -157,7 +157,7 @@ namespace text_adventure_game
                     this.outputLabel.Text += "\nYou start hyperventilating and pass out.";
                     break;
                 case 101:
-                    this.outputLabel.Text = "You fall asleep and did nothing for the rest of the day";
+                    this.outputLabel.Text = ">> You fall asleep and did nothing for the rest of the day";
 
                     this.outputLabel.Text += "Would you like to play again?";
 
@@ -179,6 +179,12 @@ namespace text_adventure_game
 
         private void option2_click(object _o, EventArgs _e)
         {
+            this.inputLabel.Text = $"<< {this.option2.Text}";
+
+            sleep_refresh(600);
+
+            this.inputLabel.Text = "";
+
             switch (PAGE)
             {
                 case 1:
@@ -187,7 +193,52 @@ namespace text_adventure_game
                 case 2:
                     PAGE = 101;
                     break;
+                case 3:
+                    this.outputLabel.Text = ">> You went to a fast food restaurant and then went home after.";
+                    this.option1.Text = "Next";
+                    this.Controls.Remove(this.option2);
 
+                    PAGE = 103;
+                    break;
+                case 4:
+                    this.outputLabel.Text = ">> As you start running there are sparks of light throughout the whole tunnel, all of a sudden you and your friends start floating";
+
+                    PAGE = 102;
+
+                    option2_click(_o, _e);
+                    break;
+                case 5:
+                    this.outputLabel.Text = ">> You stay and watch your friends leave. As they start running there are sparks of light throughout the whole tunnel, all of a sudden you and your friends start floating";
+
+                    PAGE = 102;
+
+                    break;
+                case 6:
+                    this.outputLabel.Text = ">> You and your friends decide to go home and agreed to never mention what just happened";
+
+                    PAGE = 103;
+
+                    break;
+                case 7:
+                    this.outputLabel.Text = ">> You and your friends continue to walk to the group\n";
+
+                    sleep_refresh(750);
+
+                    if (insult)
+                    {
+                        this.outputLabel.Text += "Your friend who first pointed out that they weren't moving gets very frustrated about this situation and seem very mad at you. They start running to your past self, you think interacting with your past self is very bad and try to stop them. As you get closer you start seeing flashing lights everywhere";
+                    } else
+                    {
+                        this.outputLabel.Text += "As you get closer you think something bad could happen from stop yourselves. You start seeing flashing lights as you get closer.";
+                    }
+
+                    PAGE = 102;
+
+                    break;
+                case 8:
+                    PAGE = 7;
+                    option2_click(_o, _e);
+                    break;
                 case 101:
                     this.outputLabel.Text = "You fall asleep and did nothing for the rest of the day";
                     break;
@@ -200,6 +251,17 @@ namespace text_adventure_game
         {
             switch (PAGE)
             {
+                case 4:
+                    Random rnd = new Random();
+                    int rnd_int = rnd.Next(0, 101);
+
+                    if (rnd_int > 10)
+                    {
+                        insult = true;
+                    }
+
+                    this.outputLabel.Text = "Your friend turns around and says in shock: \"We're still at the start! We really haven't moved at all!\"";
+                    break;
                 case 101:
                     this.outputLabel.Text = "You fall asleep and did nothing for the rest of the day";
                     break;

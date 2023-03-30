@@ -58,7 +58,7 @@ namespace text_adventure_game
             this.startButton.ForeColor = System.Drawing.Color.LightGreen;
             this.startButton.Click += new System.EventHandler(this.startButton_click);
 
-            this.option1.Location = new System.Drawing.Point(350, 40);
+            this.option1.Location = new System.Drawing.Point(60, 140);
             this.option1.Name = "option1";
             this.option1.Size = new System.Drawing.Size(100, 40);
             this.option1.TabIndex = 2;
@@ -66,7 +66,7 @@ namespace text_adventure_game
             this.option1.ForeColor = System.Drawing.Color.LightGreen;
             this.option1.Click += new System.EventHandler(this.option1_click);
 
-            this.option2.Location = new System.Drawing.Point(460, 40);
+            this.option2.Location = new System.Drawing.Point(175, 140);
             this.option2.Name = "option2";
             this.option2.Size = new System.Drawing.Size(100, 40);
             this.option2.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace text_adventure_game
             this.option2.ForeColor = System.Drawing.Color.LightGreen;
             this.option2.Click += new System.EventHandler(this.option2_click);
 
-            this.option3.Location = new System.Drawing.Point(570, 40);
+            this.option3.Location = new System.Drawing.Point(280, 140);
             this.option3.Name = "option3";
             this.option3.Size = new System.Drawing.Size(100, 40);
             this.option3.TabIndex = 2;
